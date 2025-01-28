@@ -1,0 +1,68 @@
+openapi: 3.0.1
+info:
+  title: Simple API
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /echo:
+    post:
+      operationId: postEcho
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/postEcho_200_response"
+          description: Successful response
+        "4XX":
+          description: Client Error
+        "5XX":
+          description: Server Error
+      summary: Echo back the message
+  /say-hello:
+    get:
+      operationId: getHello
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/getHello_200_response"
+          description: Successful response
+        "4XX":
+          description: Client Error
+        "5XX":
+          description: Server Error
+      summary: Get a hello message
+components:
+  schemas:
+    ErrorMessage:
+      additionalProperties: false
+      properties:
+        error:
+          type: string
+      required:
+      - error
+      type: object
+    postEcho_200_response:
+      additionalProperties: false
+      example:
+        echoedMessage: echoedMessage
+      properties:
+        echoedMessage:
+          type: string
+      required:
+      - echoedMessage
+      type: object
+    getHello_200_response:
+      additionalProperties: false
+      example:
+        message: "Hello, World!"
+      properties:
+        message:
+          example: "Hello, World!"
+          type: string
+      required:
+      - message
+      type: object
