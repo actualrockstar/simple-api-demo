@@ -14,7 +14,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/actualrockstar/simple-api/go"
+	"github.com/actualrockstar/simple-api-demo/go"
 )
 
 func main() {

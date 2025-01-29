@@ -13,6 +13,10 @@ package simple_api
 import (
 	"math/rand"
 	"time"
+	"net/http"
+	"encoding/json"
+	"fmt"
+
 )
 
 
@@ -38,20 +42,24 @@ func genMessage() string {
 	rand.Seed(time.Now().UnixNano())
 
 	randomIndex := rand.Intn(len(messages))
-
+	fmt.Println("Generated message:", messages[randomIndex])
 	return messages[randomIndex]
 }
 
 func GetHelloResponse() GetHello200Response {
-    return GetHello200Response{
+	return GetHello200Response{
         Message: genMessage(),
     }
 }
 
 func GetHelloHandler(w http.ResponseWriter, r *http.Request) {
     response := GetHelloResponse()
-    w.Header().Set("Content-Type", "application/json")
-    json.NewEncoder(w).Encode(response)
+	w.Header().Set("Content-Type", "application/json")
+	err := json.NewEncoder(w).Encode(response)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 }
 
 

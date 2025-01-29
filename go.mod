@@ -1,4 +1,4 @@
-module github.com/actualrockstar/simple-api/go
+module github.com/actualrockstar/simple-api-demo
 
 go 1.18
 

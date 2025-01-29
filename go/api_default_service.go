@@ -14,6 +14,8 @@ import (
 	"context"
 	"net/http"
 	"errors"
+	"fmt"
+	
 )
 
 // DefaultAPIService is a service that implements the logic for the DefaultAPIServicer
@@ -48,10 +50,10 @@ func (s *DefaultAPIService) PostEcho(ctx context.Context) (ImplResponse, error) 
 func (s *DefaultAPIService) GetHello(ctx context.Context) (ImplResponse, error) {
 	// TODO - update GetHello with the required logic for this service method.
 	// Add api_default_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
-
+	fmt.Println("Hello from the say hello function")
 	// TODO: Uncomment the next line to return response Response(200, GetHello200Response{}) or use other options such as http.Ok ...
-	message := genMessage()
-	return Response(200, GetHello200Response{}), nil
+	response := GetHelloResponse()
+	return Response(200, response), nil
 
 	// TODO: Uncomment the next line to return response Response(4XX, {}) or use other options such as http.Ok ...
 	// return Response(4XX, nil),nil
