@@ -25,5 +25,5 @@ func main() {
 
 	router := simple_api.NewRouter(DefaultAPIController)
 
-	log.Fatal(http.ListenAndServe(":80", router))
+	log.Fatal(http.ListenAndServe(":8080", router))
 }

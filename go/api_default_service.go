@@ -53,6 +53,7 @@ func (s *DefaultAPIService) GetHello(ctx context.Context) (ImplResponse, error) 
 	fmt.Println("Hello from the say hello function")
 	// TODO: Uncomment the next line to return response Response(200, GetHello200Response{}) or use other options such as http.Ok ...
 	response := GetHelloResponse()
+	//response := "Hello World!"
 	return Response(200, response), nil
 
 	// TODO: Uncomment the next line to return response Response(4XX, {}) or use other options such as http.Ok ...

@@ -1,0 +1,58 @@
+openapi: 3.0.1
+info:
+  title: Simple API
+  version: 1.0.0
+paths:
+  "/say-hello":
+    get:
+      summary: Get a hello message
+      operationId: getHello
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Hello, World!
+                required:
+                - message
+                additionalProperties: false
+        4XX:
+          description: Client Error
+        5XX:
+          description: Server Error
+  "/echo":
+    post:
+      summary: Echo back the message
+      operationId: postEcho
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  echoedMessage:
+                    type: string
+                required:
+                - echoedMessage
+                additionalProperties: false
+        4XX:
+          description: Client Error
+        5XX:
+          description: Server Error
+components:
+  schemas:
+    ErrorMessage:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+      - error
+      additionalProperties: false
